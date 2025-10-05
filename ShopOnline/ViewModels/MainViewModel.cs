@@ -101,9 +101,26 @@ namespace ShopOnline
             LoadTableData(); // Обновляем данные
         }
 
+        private void ExportJson(object obj)
+        {
+            if (SelectedTable == null || TableData == null)
+            {
+                ConnectionStatus = "Ошибка: Таблица не выбрана";
+                return;
+            }
+            _exportService.ExportJson(TableData, SelectedTable.TableName);
+        }
 
+        private void ImportJson(object obj)
+        {
+            if (SelectedTable == null)
+            {
+                ConnectionStatus = "Ошибка: Таблица не выбрана";
+                return;
+            }
+            TableData = _exportService.ImportJson(SelectedTable.TableName);
+        }
 
-        // Остальные свойства и методы из исходного MainViewModel
         private DataRowView _selectedRow;
 
         public DataRowView SelectedRow
