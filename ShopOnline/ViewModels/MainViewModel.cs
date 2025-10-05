@@ -82,6 +82,28 @@ namespace ShopOnline
             if (SelectedTable == null) return;
             TableData = _tableService.LoadTableData(SelectedTable.TableName);
         }
+        private void AddRecord(object obj)
+        {
+            if (SelectedTable == null) return;
+            _recordService.AddRecord(SelectedTable.TableName);
+            LoadTableData(); // Обновляем данные
+        }
+
+        private void SaveRecord(object obj)
+        {
+            if (SelectedTable == null || TableData == null) return;
+            _recordService.SaveRecord(SelectedTable.TableName, TableData);
+            ConnectionStatus = "Изменения сохранены";
+        }
+
+        private void DeleteRecord(object obj)
+        {
+            if (SelectedRow == null || SelectedTable == null) return;
+            _recordService.DeleteRecord(SelectedTable.TableName, SelectedRow);
+            LoadTableData(); // Обновляем данные
+        }
+
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

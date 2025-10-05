@@ -23,7 +23,7 @@ namespace ShopOnline
         public MainWindow()
         {
             InitializeComponent();
-
+            DataContext = new MainViewModel();
             // Регистрируем обработчики для обоих ScrollViewer'ов
             LeftScrollViewer.PreviewMouseWheel += OnScrollViewerMouseWheel;
             RightScrollViewer.PreviewMouseWheel += OnScrollViewerMouseWheel;
