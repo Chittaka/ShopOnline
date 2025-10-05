@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ProjectMaster
+namespace ShopOnline
 {
     public class RelayCommand : ICommand
     {

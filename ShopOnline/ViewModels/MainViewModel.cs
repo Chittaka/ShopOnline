@@ -69,8 +69,6 @@ namespace ShopOnline
             AddRecordCommand = new RelayCommand(AddRecord);
             SaveRecordCommand = new RelayCommand(SaveRecord);
             DeleteRecordCommand = new RelayCommand(DeleteRecord);
-            ExportJsonCommand = new RelayCommand(ExportJson);
-            ImportJsonCommand = new RelayCommand(ImportJson);
 
             // Загрузка таблиц
             Tables = _tableService.LoadTables();
@@ -104,6 +102,15 @@ namespace ShopOnline
         }
 
 
+
+        // Остальные свойства и методы из исходного MainViewModel
+        private DataRowView _selectedRow;
+
+        public DataRowView SelectedRow
+        {
+            get => _selectedRow;
+            set { _selectedRow = value; OnPropertyChanged(); }
+        }
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
